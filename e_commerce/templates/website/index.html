@@ -1,0 +1,22 @@
+{% extends "website/common/base.html" %}
+
+{% block title %} 
+    Dashboard - E-Commerce Website
+{% endblock %}
+
+{% block main_content %}
+    <h1>Welcome to Our E-Commerce Store</h1>
+    <p>Discover a wide range of products at unbeatable prices!</p>
+    <div class="product-list">
+        {% for product in products %}
+            <div class="product-item">
+                <h2>{{ product.name }}</h2>
+                <p>Price: ${{ product.price }}</p>
+                <p>{{ product.description }}</p>
+            </div>
+        {% empty %};
+            <p>No products available at the moment. Please check back later.</p>
+        {% endfor %}
+
+    </div>
+{% endblock %}
