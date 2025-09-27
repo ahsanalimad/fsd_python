@@ -90,13 +90,18 @@ WSGI_APPLICATION = 'e_commerce.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'e_commerce', # Database name
+    #     'USER': 'root', # Replace with your MySQL username
+    #     'PASSWORD': 'Ahsan@Mysql', # Replace with your MySQL password
+    #     'HOST': 'localhost', # Or your database host
+    #     'PORT': '3306', # Default MySQL port
+    # }
+
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'e_commerce', # Database name
-        'USER': 'root', # Replace with your MySQL username
-        'PASSWORD': 'Ahsan@Mysql', # Replace with your MySQL password
-        'HOST': 'localhost', # Or your database host
-        'PORT': '3306', # Default MySQL port
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
