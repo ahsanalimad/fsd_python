@@ -13,13 +13,6 @@ class Products(model.Model):
     def __str__(self):
         return self.name
 
-# Signal to create auth token when a new user is created
-@receiver(post_save, sender='website.AuthUser')
-def create_auth_user_token(sender, instance, created, **kwargs):
-    if created:
-        from rest_framework.authtoken.models import Token
-        Token.objects.create(user=instance)
-
 class AuthUser(AbstractUser):
     # Inherits all fields from AbstractUser
     email = model.EmailField(unique=True)
@@ -32,4 +25,10 @@ class AuthUser(AbstractUser):
     def __str__(self):
         return self.email
     
-    
+
+# Signal to create auth token when a new user is created
+@receiver(post_save, sender=AuthUser)
+def create_auth_user_token(sender, instance, created, **kwargs):
+    if created:
+        from rest_framework.authtoken.models import Token
+        Token.objects.create(user=instance)    
